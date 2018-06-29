@@ -60,7 +60,7 @@ open class SyntaxTextView: View {
 	
 	#if os(iOS)
 
-	public var contentInset: UIEdgeInsets = .zero {
+	public var contentInset: UIEdgeInsets = UIEdgeInsets() {
 		didSet {
 			textView.contentInset = contentInset
 			textView.scrollIndicatorInsets = contentInset
@@ -347,7 +347,7 @@ open class SyntaxTextView: View {
 			return nil
 		}
 		
-		let spaceAttrString = NSAttributedString(string: " ", attributes: [.font: theme.font])
+		let spaceAttrString = NSAttributedString(string: " ", attributes: [NSAttributedString.Key.font: theme.font])
 		let spaceWidth = spaceAttrString.size().width
 		
 		let info = ThemeInfo(theme: theme, spaceWidth: spaceWidth)
@@ -450,7 +450,7 @@ open class SyntaxTextView: View {
 		
 		for (range, state) in rangesToUpdate {
 			
-			var attr = [NSAttributedStringKey: Any]()
+			var attr = [NSAttributedString.Key: Any]()
 			attr[.editorPlaceholder] = state
 
 			textStorage.addAttributes(attr, range: range)
@@ -467,7 +467,7 @@ open class SyntaxTextView: View {
 		
 		textStorage.beginEditing()
 
-		var attributes = [NSAttributedStringKey: Any]()
+		var attributes = [NSAttributedString.Key: Any]()
 		
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.paragraphSpacing = 2.0
@@ -476,7 +476,7 @@ open class SyntaxTextView: View {
 		
 		let wholeRange = NSRange(location: 0, length: (source as NSString).length)
 		
-		attributes[.paragraphStyle] = paragraphStyle
+		attributes[NSAttributedString.Key.paragraphStyle] = paragraphStyle
 		
 		for (attr, value) in theme.globalAttributes() {
 			
@@ -505,7 +505,7 @@ open class SyntaxTextView: View {
 				
 				let contentRange = NSRange(location: range.lowerBound + 2, length: range.length - 4)
 				
-				var attr = [NSAttributedStringKey: Any]()
+				var attr = [NSAttributedString.Key: Any]()
 				
 				var state: EditorPlaceholderState = .inactive
 				
@@ -517,8 +517,8 @@ open class SyntaxTextView: View {
 				
 				textStorage.addAttributes(theme.attributes(for: token), range: contentRange)
 				
-				textStorage.addAttributes([.foregroundColor: Color.clear, .font: Font.systemFont(ofSize: 0.01)], range: startRange)
-				textStorage.addAttributes([.foregroundColor: Color.clear, .font: Font.systemFont(ofSize: 0.01)], range: endRange)
+				textStorage.addAttributes([NSAttributedString.Key.foregroundColor: Color.clear, NSAttributedString.Key.font: Font.systemFont(ofSize: 0.01)], range: startRange)
+				textStorage.addAttributes([NSAttributedString.Key.foregroundColor: Color.clear, NSAttributedString.Key.font: Font.systemFont(ofSize: 0.01)], range: endRange)
 				
 				textStorage.addAttributes(attr, range: range)
 				continue

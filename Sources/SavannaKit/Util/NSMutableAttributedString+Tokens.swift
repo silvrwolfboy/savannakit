@@ -20,9 +20,9 @@ public extension NSMutableAttributedString {
 		
 		self.init(string: source)
 		
-		var attributes = [NSAttributedStringKey: Any]()
+		var attributes = [NSAttributedString.Key: Any]()
 		
-		let spaceAttrString = NSAttributedString(string: " ", attributes: [.font: theme.font])
+		let spaceAttrString = NSAttributedString(string: " ", attributes: [NSAttributedString.Key.font: theme.font])
 		let spaceWidth = spaceAttrString.size().width
 		
 		let themeInfo = ThemeInfo(theme: theme, spaceWidth: spaceWidth)
@@ -38,7 +38,7 @@ public extension NSMutableAttributedString {
 		
 		let wholeRange = NSRange(location: 0, length: source.count)
 		
-		attributes[.paragraphStyle] = paragraphStyle
+		attributes[NSAttributedString.Key.paragraphStyle] = paragraphStyle
 
 		for (attr, value) in theme.globalAttributes() {
 			attributes[attr] = value
@@ -63,14 +63,14 @@ public extension NSMutableAttributedString {
 				
 				let contentRange = NSRange(location: range.lowerBound + 2, length: range.length - 4)
 				
-				var attr = [NSAttributedStringKey: Any]()
+				var attr = [NSAttributedString.Key: Any]()
 				
 				attr[.editorPlaceholder] = EditorPlaceholderState.inactive
 				
 				self.addAttributes(theme.attributes(for: token), range: contentRange)
 				
-				self.addAttributes([.foregroundColor: Color.clear, .font: Font.systemFont(ofSize: 0.01)], range: startRange)
-				self.addAttributes([.foregroundColor: Color.clear, .font: Font.systemFont(ofSize: 0.01)], range: endRange)
+				self.addAttributes([NSAttributedString.Key.foregroundColor: Color.clear, NSAttributedString.Key.font: Font.systemFont(ofSize: 0.01)], range: startRange)
+				self.addAttributes([NSAttributedString.Key.foregroundColor: Color.clear, NSAttributedString.Key.font: Font.systemFont(ofSize: 0.01)], range: endRange)
 				
 				self.addAttributes(attr, range: range)
 				continue

@@ -379,6 +379,7 @@
 					};
 					BEDA3F341E380E5D00B5091C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
 					};
 					BEE6D386209A312400E881D9 = {
@@ -746,7 +747,7 @@
 				PRODUCT_NAME = SavannaKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -773,7 +774,7 @@
 				PRODUCT_NAME = SavannaKit;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
